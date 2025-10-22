@@ -1,5 +1,6 @@
 
 import {v2 as cloudinary} from "cloudinary"
+import fs from "fs";
 
 cloudinary.config({ 
         cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
@@ -15,12 +16,13 @@ try {
         resource_type:"auto",
     })
     console.log("File has been uploaded Successfully",response.url)
-    
-} catch (error) {
-    FileSystem.unlinkSync(localfilepath);
+    fs.unlinkSync(localfilepath); 
+    return response;
+  } catch (error) {
+    fs.unlinkSync(localfilepath);
     return null 
-}
-}
+    }
+  }
 
 export {uploadOnCloudinary}
 

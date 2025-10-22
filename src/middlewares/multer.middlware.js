@@ -1,6 +1,7 @@
 
 import multer from "multer";
 
+// just copy and pasted from "multer" website
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
